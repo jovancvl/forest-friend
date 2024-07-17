@@ -22,6 +22,8 @@ public class SlashSkip implements MusicSlashCommand {
 
         Track nextTrack = musicManager.getSongQueue(guild.getIdLong()).poll();
 
+        // what if nextTrack is null??
+
         musicManager.getLavalinkClient().getOrCreateLink(guild.getIdLong()).getPlayer()
                 .flatMap((player) -> player.setTrack(nextTrack))
                 .subscribe((player) -> event.reply(String.format("Skipping, now playing: %s | <%s>", player.getTrack().getInfo().getTitle(), player.getTrack().getInfo().getUri())).queue());

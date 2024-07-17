@@ -51,7 +51,7 @@ public class AudioLoader extends AbstractAudioLoadResultHandler {
             return;
         }
 
-        final Track firstTrack = tracks.get(0);
+        final Track firstTrack = tracks.getFirst();
 
         event.getHook().sendMessage("Adding to queue: " + firstTrack.getInfo().getTitle() + " | <" + firstTrack.getInfo().getUri() + '>').queue();
 

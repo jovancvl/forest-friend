@@ -10,11 +10,7 @@ import net.dv8tion.jda.api.interactions.commands.build.Commands;
 import net.dv8tion.jda.api.requests.GatewayIntent;
 import net.dv8tion.jda.api.utils.MemberCachePolicy;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
-
-import javax.annotation.PostConstruct;
 
 @Service
 public class Bot {
@@ -35,8 +31,6 @@ public class Bot {
         //LavalinkClient lavalinkClient = new LavalinkClient(Helpers.getUserIdFromToken(token));
 
         //Listener listener = new Listener();
-
-
 
         JDA jda = JDABuilder.createDefault(token)
                 .setVoiceDispatchInterceptor(new JDAVoiceUpdateListener(lavalinkClient))

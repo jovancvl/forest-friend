@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TsundereBot Controls</title>
+    <script src="https://cdn.jsdelivr.net/npm/@stomp/stompjs@7.0.0/bundles/stomp.umd.min.js"></script>
+    <script src="/websocket.js"></script>
+</head>
+<body>
+<div id="maindiv">
+    <p id="serverid">{{server}}</p>
+    <p id="current">{{song}}</p>
+    <input id="query" type="text" autocomplete="off"><button id="querybutton">Send</button>
+    <ol id="queue">
+        {{#queue}}<li>{{.}}</li>{{/queue}}
+    </ol>
+</div>
+</body>
+</html>
