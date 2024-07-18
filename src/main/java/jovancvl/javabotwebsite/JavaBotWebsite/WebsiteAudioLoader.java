@@ -6,16 +6,16 @@ import jovancvl.javabotwebsite.JavaBotWebsite.all.Music.GuildMusicManager;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
-import org.springframework.stereotype.Service;
 
 import java.util.LinkedList;
 import java.util.List;
 
-
 public class WebsiteAudioLoader extends AbstractAudioLoadResultHandler {
 
+    /*
     @Autowired
     private SimpMessagingTemplate template;
+     */
     private final GuildMusicManager manager;
     private final long guildId;
 
@@ -33,19 +33,19 @@ public class WebsiteAudioLoader extends AbstractAudioLoadResultHandler {
         WebSocketMessage response = new WebSocketMessage(track.getInfo().getTitle());
         String url = "/controls/" + this.guildId + "/addSong";
 
-        this.template.convertAndSend(url, response);
+        WebSocketMessagingService.template.convertAndSend(url, response);
     }
 
     @Override
     public void onPlaylistLoaded(@NotNull PlaylistLoaded playlistLoaded) {
         List<Track> songList = playlistLoaded.getTracks();
-        List<String> songNamesList = new LinkedList<>(songList.stream().map((song) -> song.getInfo().getTitle()).toList());
-
-        WebSocketMessage response = new WebSocketMessage("Playlist loaded", songNamesList);
 
         this.manager.scheduler.enqueuePlaylist(songList);
 
-        this.template.convertAndSend("/controls/" + this.guildId + "/addPlaylist", response);
+        List<String> songNamesList = new LinkedList<>(this.manager.scheduler.queue.stream().map((song) -> song.getInfo().getTitle()).toList());
+        WebSocketMessage response = new WebSocketMessage("Playlist loaded", songNamesList);
+
+        WebSocketMessagingService.template.convertAndSend("/controls/" + this.guildId + "/addPlaylist", response);
     }
 
     @Override
@@ -66,7 +66,7 @@ public class WebsiteAudioLoader extends AbstractAudioLoadResultHandler {
         WebSocketMessage response = new WebSocketMessage(firstTrack.getInfo().getTitle());
         String url = "/controls/" + this.guildId + "/addSong";
 
-        this.template.convertAndSend(url, response);
+        WebSocketMessagingService.template.convertAndSend(url, response);
 
     }
 
@@ -75,7 +75,7 @@ public class WebsiteAudioLoader extends AbstractAudioLoadResultHandler {
         WebSocketMessage response = new WebSocketMessage("No matches");
         String url = "/controls/" + this.guildId + "/noMatches";
 
-        this.template.convertAndSend(url, response);
+        WebSocketMessagingService.template.convertAndSend(url, response);
 
     }
 
@@ -84,6 +84,6 @@ public class WebsiteAudioLoader extends AbstractAudioLoadResultHandler {
         WebSocketMessage response = new WebSocketMessage("loadfailed");
         String url = "/controls/" + this.guildId + "/loadFailed";
 
-        this.template.convertAndSend(url, response);
+        WebSocketMessagingService.template.convertAndSend(url, response);
     }
 }

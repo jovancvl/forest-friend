@@ -34,4 +34,8 @@ public class GuildMusicManager {
     public Optional<LavalinkPlayer> getPlayer() {
         return this.getLink().map(Link::getCachedPlayer);
     }
+
+    public long getGuildId() {
+        return guildId;
+    }
 }
