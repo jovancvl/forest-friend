@@ -42,7 +42,7 @@ public class Listener extends ListenerAdapter {
         Guild g = event.getGuild();
 
         try {
-            Role r = g.getRolesByName("in vc", true).get(0);
+            Role r = g.getRolesByName("in vc", true).getFirst();
 
             if (m.getVoiceState().inAudioChannel()){
                 g.addRoleToMember(m, r).queue();
@@ -67,10 +67,5 @@ public class Listener extends ListenerAdapter {
         } else {
             System.out.println("id of timed out member " + m.getIdLong());
         }
-    }
-
-    @Override
-    public void onButtonInteraction(@NotNull ButtonInteractionEvent event) {
-        commandManager.runButton(event);
     }
 }

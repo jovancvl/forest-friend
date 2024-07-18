@@ -52,6 +52,15 @@ function initialize(){
     console.log("initialize started");
     server_id = document.getElementById("serverid").innerHTML;
     document.getElementById("querybutton").addEventListener("click", sendQuery);
+    document.getElementById("skipbutton").addEventListener("click", skipSong)
+}
+
+function skipSong(){
+    var url = "/app/controls/" + server_id + "/skip";
+    stompClient.publish({
+            destination: url,
+            body: JSON.stringify({'message': "skip"})
+        });
 }
 
 function sendQuery(){
@@ -67,7 +76,7 @@ function sendQuery(){
 }
 
 function addSong(message){
-    console.log(message);
+    //console.log(message);
     li = document.createElement("li");
     text = document.createTextNode(message.message);
     li.appendChild(text);
@@ -75,7 +84,6 @@ function addSong(message){
 }
 
 function addPlaylist(message) {
-    document.getElementById("queue").innerHTML = "";
     for (const e of message.songList) {
         li = document.createElement("li");
         text = document.createTextNode(e);
@@ -87,9 +95,17 @@ function addPlaylist(message) {
 function trackStart(message){
     // realistically, should take the first song from the queue and put it as the playing song, but more accurate to take info from event
     document.getElementById("current").innerHTML = message.message;
+    //console.log(document.getElementById("queue").firstElementChild)
+    document.getElementById("queue").firstElementChild.remove();
 }
 
 function trackEnd(message){
-    // worries about race conditions?
+    // fired when no songs left in queue and current track ended or cleared queue
+    // in any case queue is empty after this is fired
     document.getElementById("current").innerHTML = "No song playing";
+    document.getElementById("queue").innerHTML = "";
+}
+
+function pauseOrResume(){
+    document.getElementById("current")
 }

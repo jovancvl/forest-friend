@@ -37,7 +37,7 @@ public class Bot {
                 .addEventListeners(listener)
                 .enableIntents(GatewayIntent.GUILD_MEMBERS)
                 .setMemberCachePolicy(MemberCachePolicy.ALL)
-                .setActivity(Activity.playing("with your mom!"))
+                .setActivity(Activity.customStatus("/control"))
                 .build().awaitReady();
 
         jda.updateCommands()
@@ -48,7 +48,7 @@ public class Bot {
                 .addCommands(Commands.slash("queue", "Shows queue"))
                 .addCommands(Commands.slash("skip", "Go to next song"))
                 .addCommands(Commands.slash("stop", "Stops playback and clears queue"))
-                .addCommands(Commands.slash("control", "IT NOT DONE YET || control your music with buttons"))
+                .addCommands(Commands.slash("control", "Control the music on the website"))
                 .queue();
     }
 }

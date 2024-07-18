@@ -1,6 +1,8 @@
 package jovancvl.javabotwebsite.JavaBotWebsite.all.Music;
 import dev.arbjerg.lavalink.client.player.Track;
 import dev.arbjerg.lavalink.protocol.v4.Message;
+import jovancvl.javabotwebsite.JavaBotWebsite.WebSocketMessage;
+import jovancvl.javabotwebsite.JavaBotWebsite.WebSocketMessagingService;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -47,6 +49,7 @@ public class TrackScheduler {
     public void onTrackStart(Track track) {
         // Your homework: Send a message to the channel somehow, have fun!
         System.out.println("Track started: " + track.getInfo().getTitle());
+        WebSocketMessagingService.template.convertAndSend("/controls/" + this.guildMusicManager.getGuildId() + "/trackStart", new WebSocketMessage(track.getInfo().getTitle()));
     }
 
     public void onTrackEnd(Track lastTrack, Message.EmittedEvent.TrackEndEvent.AudioTrackEndReason endReason) {
@@ -56,7 +59,11 @@ public class TrackScheduler {
 
             if (nextTrack != null) {
                 this.startTrack(nextTrack);
+            } else {
+                WebSocketMessagingService.template.convertAndSend("/controls/" + this.guildMusicManager.getGuildId() + "/trackEnd", new WebSocketMessage("no song"));
             }
+        } else if (this.queue.isEmpty()){
+            WebSocketMessagingService.template.convertAndSend("/controls/" + this.guildMusicManager.getGuildId() + "/trackEnd", new WebSocketMessage("no song"));
         }
     }
 

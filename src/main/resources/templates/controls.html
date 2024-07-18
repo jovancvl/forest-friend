@@ -8,9 +8,10 @@
 </head>
 <body>
 <div id="maindiv">
-    <p id="serverid">{{server}}</p>
+    <p id="serverid" hidden="hidden">{{server}}</p>
     <p id="current">{{song}}</p>
-    <input id="query" type="text" autocomplete="off"><button id="querybutton">Send</button>
+    <input id="query" type="text" autocomplete="off"><button id="querybutton">Send</button><br>
+    <button id="skipbutton">Skip</button>
     <ol id="queue">
         {{#queue}}<li>{{.}}</li>{{/queue}}
     </ol>
