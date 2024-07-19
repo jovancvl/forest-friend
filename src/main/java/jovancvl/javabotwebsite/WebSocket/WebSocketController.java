@@ -11,6 +11,8 @@ import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
 
 import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 
 @Controller
@@ -62,9 +64,9 @@ public class WebSocketController {
         String identifier = songNameOrUrl.getMessage();
 
         try {
-            URL url = new URL(identifier);
+            URL url = new URI(identifier).toURL();
             identifier = url.toString();
-        } catch (MalformedURLException e) {
+        } catch (MalformedURLException | URISyntaxException e) {
             identifier = "ytsearch:" + identifier;
         }
 

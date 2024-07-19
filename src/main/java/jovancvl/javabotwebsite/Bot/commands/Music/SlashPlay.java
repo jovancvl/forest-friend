@@ -9,6 +9,8 @@ import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 
 import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 
 public class SlashPlay implements MusicSlashCommand {
@@ -39,9 +41,9 @@ public class SlashPlay implements MusicSlashCommand {
         final var mngr = musicManager.getOrCreateGuildMusicManager(guildId);
 
         try {
-            URL url = new URL(identifier);
+            URL url = new URI(identifier).toURL();
             identifier = url.toString();
-        } catch (MalformedURLException e) {
+        } catch (MalformedURLException | URISyntaxException e) {
             identifier = "ytsearch:" + identifier;
         }
 
