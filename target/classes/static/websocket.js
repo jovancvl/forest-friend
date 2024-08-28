@@ -53,12 +53,13 @@ function initialize(){
     server_id = document.getElementById("serverid").innerHTML;
     document.getElementById("querybutton").addEventListener("click", sendQuery);
     document.getElementById("skipbutton").addEventListener("click", skipSong);
-    document.getElementById("pausebutton").addEventListener("click", pauseOrResume)
-
-    queue = Array.from(document.getElementById("queue").children);
-    queue.forEach(function(li){
-        var button = li.lastElementChild.addEventListener("click", removeFromQueue);
-    })
+    document.getElementById("pausebutton").addEventListener("click", pauseOrResume);
+    document.getElementById("query").addEventListener("keyup", function(event) {
+        event.preventDefault();
+        if (event.keyCode === 13) {
+            document.getElementById("querybutton").click();
+        }
+    });
 
     tablequeue = Array.from(document.getElementById("tablequeue").firstElementChild.children);
     //console.log(tablequeue);
@@ -90,17 +91,6 @@ function sendQuery(){
 }
 
 function createListElement(songName){
-    li = document.createElement("li");
-    span = document.createElement("span");
-    span.textContent = songName;
-    button = document.createElement('button');
-    button.innerHTML = "X";
-    button.addEventListener("click", removeFromQueue);
-
-    li.appendChild(span);
-    li.appendChild(button);
-
-    document.getElementById("queue").appendChild(li);
 
     tr = document.createElement("tr");
     empty_td = document.createElement("td");
@@ -138,10 +128,6 @@ function addPlaylist(message) {
 function trackStart(message){
     // realistically, should take the first song from the queue and put it as the playing song, but more accurate to take info from event
     document.getElementById("current").innerHTML = message.message;
-    firstSongInQueue = document.getElementById("queue").firstElementChild;
-    if (firstSongInQueue !== null && (firstSongInQueue.firstElementChild.textContent === message.message)){
-        firstSongInQueue.remove();
-    }
 
     firstSongInTableQueue = document.getElementById("tablequeue").firstElementChild.firstElementChild;
     if (firstSongInTableQueue !== null && (firstSongInTableQueue.children[1].textContent === message.message)){
@@ -160,8 +146,11 @@ function trackEnd(message){
     // fired when no songs left in queue and current track ended or cleared queue
     // in any case queue is empty after this is fired
     document.getElementById("current").innerHTML = "No song playing";
-    document.getElementById("queue").innerHTML = "";
-    document.getElementById("tablequeue").firstChildElement.innerHTML = "";
+    tablebody = document.getElementById("tablequeue").firstElementChild;
+
+    while (tablebody.firstElementChild) {
+        tablebody.removeChild(tablebody.firstElementChild);
+    }
 }
 
 function pauseOrResume(){

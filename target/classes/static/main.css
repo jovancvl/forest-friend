@@ -1,3 +1,7 @@
+body {
+    margin-bottom: 50px;
+}
+
 p {
     text-align: center;
 }
@@ -17,12 +21,6 @@ td {
     font-size: 16px;
 }
 
-/* label focus color */
-.input-field input[type=text]:focus + label {
-    color: #3949ab;
-}
-/* label underline focus color */
-.input-field input[type=text]:focus {
-    border-bottom: 1px solid #3949ab;
-    box-shadow: 0 1px 0 0 #3949ab;
+input:focus {
+    border-bottom: 1px solid #3949ab !important;
 }
