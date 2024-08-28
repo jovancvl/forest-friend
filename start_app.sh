@@ -1,12 +1,13 @@
 #!/bin/sh
 
+git clone https://github.com/jovancvl/JavaBotWebsite
+
 cd JavaBotWebsite
 
 # Start the first process
-cd lavalink
-java -jar Lavalink.jar &
-cd ..
+java -jar lavalink/Lavalink.jar &
 
+ls
 # Start the second process
 java -jar JavaBotWebsite.jar &
 

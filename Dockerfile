@@ -9,8 +9,7 @@ COPY start_app.sh start_app.sh
 ENV TsundereBotToken=Njc1NzY5NDU1MTYyMTYzMjcx.Xj79WQ.-wUk_f95bsrmfjHyDJM68TaxxOM
 
 RUN apk add --no-cache git && \
-	apk add libgcc && \
-        git clone https://github.com/jovancvl/JavaBotWebsite
+	apk add libgcc
 
 RUN sed -i 's/\r$//' start_app.sh  && \  
         chmod +x start_app.sh
