@@ -43,7 +43,7 @@ public class SlashPlay implements MusicSlashCommand {
         try {
             URL url = new URI(identifier).toURL();
             identifier = url.toString();
-        } catch (MalformedURLException | URISyntaxException e) {
+        } catch (Exception e) {
             identifier = "ytsearch:" + identifier;
         }
 

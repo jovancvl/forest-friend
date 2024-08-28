@@ -14,6 +14,7 @@ import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.Queue;
 
 @Controller
 public class WebSocketController {
@@ -66,10 +67,27 @@ public class WebSocketController {
         try {
             URL url = new URI(identifier).toURL();
             identifier = url.toString();
-        } catch (MalformedURLException | URISyntaxException e) {
+        } catch (Exception e) {
             identifier = "ytsearch:" + identifier;
         }
 
         link.loadItem(identifier).subscribe(new WebsiteAudioLoader(manager, guildId));
+    }
+
+    // remove from queue
+    @MessageMapping("/controls/{server}/removeFromQueue")
+    @SendTo("/controls/{server}/queueUpdate")
+    public WebSocketMessage removeFromQueue(@DestinationVariable String server, WebSocketMessage songName){
+        long guildId = Long.parseLong(server);
+        Queue<Track> q = this.musicManager.getSongQueue(guildId);
+
+        for (Track t : q) {
+            if (t.getInfo().getTitle().equalsIgnoreCase(songName.getMessage())) {
+                this.musicManager.getOrCreateGuildMusicManager(guildId).scheduler.queue.remove(t);
+                break;
+            }
+        }
+
+        return new WebSocketMessage("removed song from queue");
     }
 }

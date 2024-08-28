@@ -49,10 +49,19 @@ stompClient.onStompError = (frame) => {
 };
 
 function initialize(){
-    console.log("initialize started");
+    //console.log("initialize started");
     server_id = document.getElementById("serverid").innerHTML;
     document.getElementById("querybutton").addEventListener("click", sendQuery);
-    document.getElementById("skipbutton").addEventListener("click", skipSong)
+    document.getElementById("skipbutton").addEventListener("click", skipSong);
+    document.getElementById("pausebutton").addEventListener("click", pauseOrResume)
+
+    tablequeue = Array.from(document.getElementById("tablequeue").firstElementChild.children);
+    //console.log(tablequeue);
+
+    tablequeue.forEach(function(td){
+        // puts click event listener on the i element of the button in the tablequeue
+        var button = td.lastElementChild.lastElementChild.addEventListener("click", removeFromTableQueue);
+    })
 }
 
 function skipSong(){
@@ -75,37 +84,95 @@ function sendQuery(){
     querybox.value = "";
 }
 
+function createListElement(songName){
+
+    tr = document.createElement("tr");
+    empty_td = document.createElement("td");
+    name_td = document.createElement("td");
+    button_td = document.createElement("td");
+    button_a = document.createElement("a");
+    button_i = document.createElement("i");
+
+    name_td.textContent = songName;
+    button_i.className = "large material-icons";
+    button_i.textContent = "remove";
+    button_i.addEventListener("click", removeFromTableQueue);
+    button_a.className = "btn-small btn-floating right pink darken-1";
+
+    button_a.appendChild(button_i);
+    button_td.appendChild(button_a);
+
+    tr.appendChild(empty_td);
+    tr.appendChild(name_td);
+    tr.appendChild(button_td);
+
+    document.getElementById("tablequeue").firstElementChild.appendChild(tr);
+}
+
 function addSong(message){
-    //console.log(message);
-    li = document.createElement("li");
-    text = document.createTextNode(message.message);
-    li.appendChild(text);
-    document.getElementById("queue").appendChild(li);
+    createListElement(message.message);
 }
 
 function addPlaylist(message) {
     for (const e of message.songList) {
-        li = document.createElement("li");
-        text = document.createTextNode(e);
-        li.appendChild(text);
-        document.getElementById("queue").appendChild(li);
+        createListElement(e);
     }
 }
 
 function trackStart(message){
     // realistically, should take the first song from the queue and put it as the playing song, but more accurate to take info from event
     document.getElementById("current").innerHTML = message.message;
-    //console.log(document.getElementById("queue").firstElementChild)
-    document.getElementById("queue").firstElementChild.remove();
+
+    firstSongInTableQueue = document.getElementById("tablequeue").firstElementChild.firstElementChild;
+    if (firstSongInTableQueue !== null && (firstSongInTableQueue.children[1].textContent === message.message)){
+        firstSongInTableQueue.remove();
+
+        tablebody = document.getElementById("tablequeue").firstElementChild;
+        tablebody.style.counterReset = "none";
+            setTimeout(() => {
+                tablebody.style.counterReset = "Serial";
+            }, 0);
+    }
+
 }
 
 function trackEnd(message){
     // fired when no songs left in queue and current track ended or cleared queue
     // in any case queue is empty after this is fired
     document.getElementById("current").innerHTML = "No song playing";
-    document.getElementById("queue").innerHTML = "";
+    document.getElementById("tablequeue").firstChildElement.innerHTML = "";
 }
 
 function pauseOrResume(){
     document.getElementById("current")
+}
+
+function removeFromQueue(event) {
+    songName = event.target.parentElement.firstElementChild.textContent;
+    console.log(songName);
+    var url = "/app/controls/" + server_id + "/removeFromQueue";
+    stompClient.publish({
+            destination: url,
+            body: JSON.stringify({'message': songName})
+        });
+    event.target.parentElement.remove();
+}
+
+function removeFromTableQueue(event) {
+    // gets triggered from the "i" element inside the table
+    tablebody = event.target.parentElement.parentElement.parentElement.parentElement;
+    tr = event.target.parentElement.parentElement.parentElement;
+    songName = tr.children[1].textContent;
+    console.log(songName);
+    var url = "/app/controls/" + server_id + "/removeFromQueue";
+    stompClient.publish({
+            destination: url,
+            body: JSON.stringify({'message': songName})
+        });
+    tr.remove();
+    //console.log(tablebody.firstElementChild.firstElementChild);
+    tablebody.style.counterReset = "none";
+    setTimeout(() => {
+        tablebody.style.counterReset = "Serial";
+    }, 0);
 }

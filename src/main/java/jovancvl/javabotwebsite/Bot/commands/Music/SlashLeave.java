@@ -17,6 +17,7 @@ public class SlashLeave implements MusicSlashCommand {
             return;
         }
 
+        musicManager.getOrCreateGuildMusicManager(event.getGuild().getIdLong()).stop();
         event.getJDA().getDirectAudioController().disconnect(event.getGuild());
         event.reply("Leaving your channel!").queue();
     }
