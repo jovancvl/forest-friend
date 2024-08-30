@@ -16,7 +16,7 @@ public class WebController {
 
     @GetMapping("/controls/{server}")
     public String play(Model model, @PathVariable String server) {
-        //System.out.println(server);
+        //System.out.println("controls accessed on server " + server);
         long guildId = Long.parseLong(server);
         model.addAttribute("server", guildId);
         String songName = "No song is playing";

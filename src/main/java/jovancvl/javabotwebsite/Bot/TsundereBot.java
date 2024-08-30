@@ -28,6 +28,8 @@ public class TsundereBot {
 
         String token = System.getenv("TsundereBotToken");
 
+        //System.out.print(token);
+
         //LavalinkClient lavalinkClient = new LavalinkClient(Helpers.getUserIdFromToken(token));
 
         //Listener listener = new Listener();
