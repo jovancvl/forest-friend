@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.net.UnknownHostException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
@@ -46,15 +47,15 @@ public class MusicManager {
     }
 
     public static void registerLavalinkNodes(LavalinkClient client) {
-        List.of(
-                client.addNode(
-                        new NodeOptions.Builder()
-                                .setName("localhost")
-                                .setServerUri("http://127.0.0.1:2333")
-                                .setPassword("youshallnotpass")
-                                .build()
-                )
-        ).forEach((node) -> node.on(TrackStartEvent.class).subscribe((event) -> {
+        client.addNode(
+                new NodeOptions.Builder()
+                        .setName("lavalink-container")
+                        .setServerUri("http://lavalink-container:2333")
+                        .setPassword("youshallnotpass")
+                        .build()
+        );
+
+        client.getNodes().forEach((node) -> node.on(TrackStartEvent.class).subscribe((event) -> {
             final LavalinkNode node1 = event.getNode();
 
             LOG.trace(

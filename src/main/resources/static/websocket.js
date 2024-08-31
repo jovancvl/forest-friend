@@ -8,7 +8,7 @@ if (document.readyState === "loading") {
 var server_id = null;
 
 const stompClient = new StompJs.Client({
-    brokerURL: 'ws://javabotwebsite.onrender.com/websocket_connect'
+    brokerURL: 'ws://localhost/websocket_connect'
 });
 
 stompClient.activate();
