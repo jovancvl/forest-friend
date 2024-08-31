@@ -8,7 +8,7 @@ if (document.readyState === "loading") {
 var server_id = null;
 
 const stompClient = new StompJs.Client({
-    brokerURL: 'ws://http://tsunderebot-942066444122.europe-southwest1.run.app/websocket_connect'
+    brokerURL: 'wss://tsunderebot-942066444122.europe-southwest1.run.app/websocket_connect'
 });
 
 stompClient.activate();
