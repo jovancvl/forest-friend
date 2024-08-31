@@ -49,8 +49,8 @@ public class MusicManager {
     public static void registerLavalinkNodes(LavalinkClient client) {
         client.addNode(
                 new NodeOptions.Builder()
-                        .setName("lavalink-container")
-                        .setServerUri("lavalink-container:2333")
+                        .setName("localhost")
+                        .setServerUri("localhost:2333")
                         .setPassword("youshallnotpass")
                         .build()
         );
