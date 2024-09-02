@@ -35,7 +35,7 @@ lavalink:
       youtube: false
       bandcamp: true
       soundcloud: true
-      twitch: true
+      twitch: false
       vimeo: true
       nico: true
       http: false # warning: keeping HTTP enabled without a proxy configured could expose your server's IP address.
