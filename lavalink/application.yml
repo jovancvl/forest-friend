@@ -1,6 +1,6 @@
 server: # REST and WS server
   port: 2333
-  address: 0.0.0.0
+  address: ::1
   http2:
     enabled: false # Whether to enable HTTP/2 support
 plugins:
@@ -18,9 +18,6 @@ plugins:
       - MUSIC
       - WEB
       - TVHTML5EMBEDDED
-    clientOptions:
-      TVHTML5EMBEDDED:
-        retryLimit: 0
 lavalink:
   plugins:
   #    - dependency: "com.github.example:example-plugin:1.0.0" # required, the coordinates of your plugin
@@ -107,7 +104,6 @@ logging:
     includeQueryString: true
     includePayload: true
     maxPayloadLength: 10000
-
 
   logback:
     rollingpolicy:

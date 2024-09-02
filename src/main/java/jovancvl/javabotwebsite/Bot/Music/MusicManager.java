@@ -50,7 +50,7 @@ public class MusicManager {
         client.addNode(
                 new NodeOptions.Builder()
                         .setName("localhost")
-                        .setServerUri("http://localhost:2333")
+                        .setServerUri("http://[::1]:2333")
                         .setPassword("youshallnotpass")
                         .build()
         );
