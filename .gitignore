@@ -25,4 +25,4 @@ replay_pid*
 /.idea/
 /target/
 /lavalink/lavalink_server_logs/
-!/plugins/
+!/lavalink/plugins/*.jar
