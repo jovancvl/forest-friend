@@ -5,8 +5,8 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.3.1</version>
-		<!-- <relativePath/>  lookup parent from repository -->
+		<version>3.3.3</version>
+		<relativePath/> <!--  lookup parent from repository -->
 	</parent>
 	<groupId>jovancvl.javabotwebsite</groupId>
 	<artifactId>JavaBotWebsite</artifactId>
@@ -75,10 +75,16 @@
 
 	<repositories>
 		<repository>
+			<id>maven-central</id>
+			<name>Maven Central Repo</name>
+			<url>http://repo1.maven.org/maven2</url>
+		</repository>
+		<repository>
 			<id>ll-releases</id>
 			<name>Lavalink Releases</name>
 			<url>https://maven.lavalink.dev/releases</url>
 		</repository>
+
 	</repositories>
 
 	<build>
