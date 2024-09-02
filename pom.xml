@@ -75,16 +75,10 @@
 
 	<repositories>
 		<repository>
-			<id>maven-central</id>
-			<name>Maven Central Repo</name>
-			<url>https://repo1.maven.org/maven2/</url>
-		</repository>
-		<repository>
 			<id>ll-releases</id>
 			<name>Lavalink Releases</name>
 			<url>https://maven.lavalink.dev/releases</url>
 		</repository>
-
 	</repositories>
 
 	<build>
