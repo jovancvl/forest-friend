@@ -51,7 +51,7 @@ public class WebsiteAudioLoader extends AbstractAudioLoadResultHandler {
             return;
         }
 
-        final Track firstTrack = tracks.getFirst();
+        final Track firstTrack = tracks.get(0);
 
         this.manager.scheduler.enqueue(firstTrack);
 

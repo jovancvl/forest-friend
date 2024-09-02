@@ -40,7 +40,7 @@ public class Listener extends ListenerAdapter {
         Guild g = event.getGuild();
 
         try {
-            Role r = g.getRolesByName("in vc", true).getFirst();
+            Role r = g.getRolesByName("in vc", true).get(0);
 
             if (m.getVoiceState().inAudioChannel()){
                 g.addRoleToMember(m, r).queue();

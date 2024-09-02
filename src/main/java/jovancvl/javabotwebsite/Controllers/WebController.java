@@ -22,7 +22,7 @@ public class WebController {
         String songName = "No song is playing";
         try {
             songName = musicManager.getLavalinkClient().getOrCreateLink(guildId).getCachedPlayer().getTrack().getInfo().getTitle();
-        } catch (NullPointerException _){
+        } catch (NullPointerException e){
 
         }
 
