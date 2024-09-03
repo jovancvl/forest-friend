@@ -76,7 +76,7 @@ public class MusicManager {
                     event.getSessionId()
             );
         });
-        
+        /*
         client.on(StatsEvent.class).subscribe((event) -> {
             final LavalinkNode node = event.getNode();
 
@@ -88,7 +88,7 @@ public class MusicManager {
                     client.getLinks().size()
             );
         });
-
+        */
 
         client.on(TrackStartEvent.class).subscribe((event) ->
                 Optional.ofNullable(guildMusicManagers.get(event.getGuildId())).ifPresent(
