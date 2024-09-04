@@ -12,13 +12,16 @@ plugins:
     allowSearch: true # Whether "ytsearch:" and "ytmsearch:" can be used.
     allowDirectVideoIds: true # Whether just video IDs can match. If false, only complete URLs will be loaded.
     allowDirectPlaylistIds: true # Whether just playlist IDs can match. If false, only complete URLs will be loaded.
-    oauth:
-      enabled: true
+    pot:
+      token: "IlgQ4hDhdjpy6lOFZIxGpnyTXYlakUaneIhfoXmraK1X0FKIWYtThVq1Q7BZgVWKd7FWil2uVqBFtVaVZ7tXsH-AWKAgh1iVJLJZoFGwVYtVhVyjNdFUxyOm"
+      visitorData: "CgtnVDlqMkJsVEhjOCiIxOG2BjTiCgJGSRIcEhgSFhMLFBUWFwwYGRobHB0eHw4PIBAREiEgLA%3D%3D"
+    #oauth:
+      #enabled: true
 
       # if you have a refresh token, you may set it below (make sure to uncomment the line to apply it).
       # setting a valid refresh token will skip the OAuth flow entirely. See above note on how to retrieve
       # your refreshToken.
-      refreshToken: "1//09mZ0hmxdkeEECgYIARAAGAkSNwF-L9IrkMGXIpaDl5NDiPj8ipwxsEQrmAvC66KnW1IfKtzIZ8UfVa2XkcaEX6TPpru1cpO03Sw"
+      #refreshToken: "1//09mZ0hmxdkeEECgYIARAAGAkSNwF-L9IrkMGXIpaDl5NDiPj8ipwxsEQrmAvC66KnW1IfKtzIZ8UfVa2XkcaEX6TPpru1cpO03Sw"
 
       # Set this if you don't want the OAuth flow to be triggered, if you intend to supply a refresh token later.
       # Initialization is skipped automatically if a valid refresh token is supplied. Leave this commented if you're
@@ -76,11 +79,11 @@ lavalink:
     youtubeSearchEnabled: true
     soundcloudSearchEnabled: true
     gc-warnings: true
-    ratelimit:
-      ipBlocks: ["2a01:4f9:6b:f88e::/64"] # list of ip blocks
+    #ratelimit:
+      #ipBlocks: ["2a01:4f9:6b:f88e::/64"] # list of ip blocks
       #excludedIps: ["...", "..."] # ips which should be explicit excluded from usage by lavalink
-      strategy: "LoadBalance" # RotateOnBan | LoadBalance | NanoSwitch | RotatingNanoSwitch
-      searchTriggersFail: true # Whether a search 429 should trigger marking the ip as failing
+      #strategy: "LoadBalance" # RotateOnBan | LoadBalance | NanoSwitch | RotatingNanoSwitch
+      #searchTriggersFail: true # Whether a search 429 should trigger marking the ip as failing
       #retryLimit: 0 # -1 = use default lavaplayer value | 0 = infinity | >0 = retry will happen this numbers times
       #youtubeConfig: # Required for avoiding all age restrictions by YouTube, some restricted videos still can be played without.
       #email: "" # Email of Google account
