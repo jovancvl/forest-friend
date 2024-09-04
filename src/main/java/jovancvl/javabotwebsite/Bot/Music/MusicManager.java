@@ -52,6 +52,7 @@ public class MusicManager {
                         .setName("localhost")
                         .setServerUri("http://[::1]:2333")
                         .setPassword("youshallnotpass")
+                        .setHttpTimeout(200000) // in ms
                         .build()
         );
 
