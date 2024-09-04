@@ -7,14 +7,15 @@
     </appender>
 
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>/bot_logs/bot.log</file>
+        <file>./bot.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>/bot_logs/bot.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
-            <timeBasedFileNamingAndTriggeringPolicy
-                    class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
-                <maxFileSize>10MB</maxFileSize>
-            </timeBasedFileNamingAndTriggeringPolicy>
+            <!-- daily rollover -->
+            <fileNamePattern>./bot_logs/bot.%d{yyyy-MM-dd}.log</fileNamePattern>
+
+            <!-- keep x days' worth of history capped at 3GB total size -->
             <maxHistory>7</maxHistory>
+            <totalSizeCap>3GB</totalSizeCap>
+
         </rollingPolicy>
         <encoder>
             <pattern>%d{HH:mm:ss.SSS} %boldCyan(%-34.-34thread) %red(%10.10X{jda.shard}) %boldGreen(%-15.-15logger{0}) %highlight(%-6level) %msg%n</pattern>
@@ -22,7 +23,7 @@
         </encoder>
     </appender>
 
-    <root level="info">
+    <root level="INFO">
         <appender-ref ref="FILE"/>
         <appender-ref ref="STDOUT"/>
     </root>
