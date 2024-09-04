@@ -113,6 +113,8 @@ logging:
   level:
     root: INFO
     lavalink: INFO
+    lavalink.server.io.SocketContext: TRACE
+    com.sedmelluq.discord.lavaplayer.tools.ExceptionTools: DEBUG
 
   dev:
     lavalink:
@@ -121,12 +123,12 @@ logging:
           YoutubeOauth2Handler: INFO
 
   request:
-    enabled: false
+    enabled: true
     includeClientInfo: true
     includeHeaders: false
     includeQueryString: true
     includePayload: true
-    maxPayloadLength: 10000
+    #maxPayloadLength: 10000
 
   logback:
     rollingpolicy:
