@@ -76,7 +76,7 @@ public class MusicManager {
                     event.getSessionId()
             );
         });
-        
+
         client.on(StatsEvent.class).subscribe((event) -> {
             final LavalinkNode node = event.getNode();
 
