@@ -23,8 +23,11 @@
         </encoder>
     </appender>
 
-    <root level="INFO">
+    <logger name="root" level="INFO">
         <appender-ref ref="FILE"/>
+    </logger>
+
+    <root level="INFO">
         <appender-ref ref="STDOUT"/>
     </root>
 </configuration>
