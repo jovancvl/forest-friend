@@ -47,11 +47,7 @@ public class SlashPlay implements MusicSlashCommand {
             identifier = "ytsearch:" + identifier;
         }
 
-        link.loadItem(identifier).onErrorContinue( (error, obj) -> {
-            //System.out.println(error.toString() + " with object: " + obj.toString());
-            SlashPlay sp = new SlashPlay();
-            sp.run(event, musicManager);
-        }).subscribe(new AudioLoader(event, mngr));
+        link.loadItem(identifier).onErrorComplete().subscribe(new AudioLoader(event, mngr));
     }
 
     @Override
