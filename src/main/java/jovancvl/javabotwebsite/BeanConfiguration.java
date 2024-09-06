@@ -15,6 +15,7 @@ public class BeanConfiguration {
     @Bean
     public LavalinkClient lavalinkClient(){
         LavalinkClient lavalinkClient = new LavalinkClient(Helpers.getUserIdFromToken(System.getenv("TsundereBotToken")));
+        System.out.println("Helpers token sent to lavalink: " + Helpers.getUserIdFromToken(System.getenv("TsundereBotToken")));
         MusicManager.registerLavalinkNodes(lavalinkClient);
         MusicManager.registerLavalinkListeners(lavalinkClient);
         return lavalinkClient;
