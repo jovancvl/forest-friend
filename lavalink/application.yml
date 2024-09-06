@@ -111,7 +111,7 @@ logging:
     path: ./lavalink_server_logs/
 
   level:
-    root: INFO
+    root: TRACE
     lavalink: INFO
     lavalink.server.io.SocketContext: TRACE
     com.sedmelluq.discord.lavaplayer.tools.ExceptionTools: DEBUG
