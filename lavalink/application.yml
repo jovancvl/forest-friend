@@ -33,8 +33,9 @@ plugins:
       - WEB
       - MUSIC
       - WEBEMBEDDED
-      - ANDROID_MUSIC
       - TVHTML5EMBEDDED
+      - ANDROID_MUSIC
+      - ANDROID_TESTSUITE
 lavalink:
   plugins:
   #    - dependency: "com.github.example:example-plugin:1.0.0" # required, the coordinates of your plugin
