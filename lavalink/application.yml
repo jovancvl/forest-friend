@@ -16,7 +16,7 @@ plugins:
     #  token: "IlgQ4hDhdjpy6lOFZIxGpnyTXYlakUaneIhfoXmraK1X0FKIWYtThVq1Q7BZgVWKd7FWil2uVqBFtVaVZ7tXsH-AWKAgh1iVJLJZoFGwVYtVhVyjNdFUxyOm"
     #  visitorData: "CgtnVDlqMkJsVEhjOCiIxOG2BjTiCgJGSRIcEhgSFhMLFBUWFwwYGRobHB0eHw4PIBAREiEgLA%3D%3D"
     oauth:
-      enabled: true
+      enabled: false
 
       # if you have a refresh token, you may set it below (make sure to uncomment the line to apply it).
       # setting a valid refresh token will skip the OAuth flow entirely. See above note on how to retrieve
