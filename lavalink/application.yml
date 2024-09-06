@@ -12,16 +12,16 @@ plugins:
     allowSearch: true # Whether "ytsearch:" and "ytmsearch:" can be used.
     allowDirectVideoIds: true # Whether just video IDs can match. If false, only complete URLs will be loaded.
     allowDirectPlaylistIds: true # Whether just playlist IDs can match. If false, only complete URLs will be loaded.
-    pot:
-      token: "IlgQ4hDhdjpy6lOFZIxGpnyTXYlakUaneIhfoXmraK1X0FKIWYtThVq1Q7BZgVWKd7FWil2uVqBFtVaVZ7tXsH-AWKAgh1iVJLJZoFGwVYtVhVyjNdFUxyOm"
-      visitorData: "CgtnVDlqMkJsVEhjOCiIxOG2BjTiCgJGSRIcEhgSFhMLFBUWFwwYGRobHB0eHw4PIBAREiEgLA%3D%3D"
-    #oauth:
-      #enabled: true
+    #pot:
+    #  token: "IlgQ4hDhdjpy6lOFZIxGpnyTXYlakUaneIhfoXmraK1X0FKIWYtThVq1Q7BZgVWKd7FWil2uVqBFtVaVZ7tXsH-AWKAgh1iVJLJZoFGwVYtVhVyjNdFUxyOm"
+    #  visitorData: "CgtnVDlqMkJsVEhjOCiIxOG2BjTiCgJGSRIcEhgSFhMLFBUWFwwYGRobHB0eHw4PIBAREiEgLA%3D%3D"
+    oauth:
+      enabled: true
 
       # if you have a refresh token, you may set it below (make sure to uncomment the line to apply it).
       # setting a valid refresh token will skip the OAuth flow entirely. See above note on how to retrieve
       # your refreshToken.
-      #refreshToken: "1//09mZ0hmxdkeEECgYIARAAGAkSNwF-L9IrkMGXIpaDl5NDiPj8ipwxsEQrmAvC66KnW1IfKtzIZ8UfVa2XkcaEX6TPpru1cpO03Sw"
+      refreshToken: "1//09WWbG09F_-wSCgYIARAAGAkSNwF-L9IrlNEFCPBNj61iy2rCnqL2G8MM4QCikGRnd6IlcmEzk6YUmKjPI660_3vh9kXR71bBp58"
 
       # Set this if you don't want the OAuth flow to be triggered, if you intend to supply a refresh token later.
       # Initialization is skipped automatically if a valid refresh token is supplied. Leave this commented if you're
