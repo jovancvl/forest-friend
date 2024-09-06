@@ -28,7 +28,7 @@ public class TsundereBot {
 
         String token = System.getenv("TsundereBotToken");
 
-        System.out.println("Helpers code from bot start" + Helpers.getUserIdFromToken(token));
+        System.out.println("Helpers userId sent to JDA: " + Helpers.getUserIdFromToken(token));
 
         //LavalinkClient lavalinkClient = new LavalinkClient(Helpers.getUserIdFromToken(token));
 
