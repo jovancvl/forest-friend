@@ -1,13 +1,6 @@
-package jovancvl.javabotwebsite.Bot.commands.Music;
+package jovancvl.javabotwebsite.Bot.commands.Voice;
 
 import net.dv8tion.jda.api.entities.Member;
-
-enum MemberVCState {
-    MEMBER_NOT_IN_VC,
-    BOT_NOT_IN_VC,
-    DIFFERENT_VC,
-    SAME_VC
-}
 
 public class VoiceChannelHelper {
 

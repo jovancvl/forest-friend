@@ -2,7 +2,7 @@ package jovancvl.javabotwebsite.Bot.managers;
 
 import jovancvl.javabotwebsite.Bot.Music.MusicManager;
 import jovancvl.javabotwebsite.Bot.commands.BasicSlashCommand;
-import jovancvl.javabotwebsite.Bot.commands.Music.*;
+import jovancvl.javabotwebsite.Bot.commands.Voice.*;
 import jovancvl.javabotwebsite.Bot.commands.MusicSlashCommand;
 import jovancvl.javabotwebsite.Bot.commands.Other.SlashPing;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;

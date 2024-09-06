@@ -1,4 +1,4 @@
-package jovancvl.javabotwebsite.Bot.commands.Music;
+package jovancvl.javabotwebsite.Bot.commands.Voice;
 
 import jovancvl.javabotwebsite.Bot.Music.MusicManager;
 import jovancvl.javabotwebsite.Bot.Music.AudioLoader;
