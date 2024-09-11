@@ -1,6 +1,6 @@
 package jovancvl.javabotwebsite;
 
-import jovancvl.javabotwebsite.Bot.TsundereBot;
+import jovancvl.javabotwebsite.Bot.Bot;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +10,7 @@ import javax.annotation.PostConstruct;
 public class JavaBotWebsiteApplication {
 
 	@Autowired
-	TsundereBot tsundereBot;
+	Bot bot;
 
 	public static void main(String[] args) {
 		SpringApplication.run(JavaBotWebsiteApplication.class, args);
@@ -18,7 +18,7 @@ public class JavaBotWebsiteApplication {
 
 	@PostConstruct
 	public void startBot() throws InterruptedException {
-		tsundereBot.startBot();
+		bot.startBot();
 	}
 
 }
