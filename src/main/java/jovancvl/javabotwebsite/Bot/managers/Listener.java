@@ -36,8 +36,14 @@ public class Listener extends ListenerAdapter {
 
     @Override
     public void onGuildVoiceUpdate(@NotNull GuildVoiceUpdateEvent event){
-        Member m = event.getEntity();
+        // I want it to track who is in voice chat only in my server
         Guild g = event.getGuild();
+        if (g.getIdLong() != Constants.gospoda){
+            return;
+        }
+
+        Member m = event.getEntity();
+
 
         try {
             Role r = g.getRolesByName("in vc", true).get(0);
@@ -48,12 +54,14 @@ public class Listener extends ListenerAdapter {
                 g.removeRoleFromMember(m, r).queue();
             }
         } catch (ArrayIndexOutOfBoundsException e){
-            //System.out.println("no role found");
+            LOG.warn("No \"in vc\" role found in server with ID: {}", g.getIdLong());
         }
     }
 
     @Override
     public void onGuildMemberUpdateTimeOut(@NotNull GuildMemberUpdateTimeOutEvent event){
+        /*
+        // Sunsetting this
         //System.out.println("Timeout update fired");
         Member m = event.getMember();
         if (m.getIdLong() == Constants.yourDaddy || m.getIdLong() == 117390865730764802L){
@@ -65,5 +73,7 @@ public class Listener extends ListenerAdapter {
         } else {
             System.out.println("id of timed out member " + m.getIdLong());
         }
+
+         */
     }
 }

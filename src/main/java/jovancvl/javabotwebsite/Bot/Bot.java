@@ -13,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class TsundereBot {
+public class Bot {
     //private static final Logger LOG = LoggerFactory.getLogger(Bot.class);
 
     //private static final int SESSION_INVALID = 4006;
@@ -26,9 +26,7 @@ public class TsundereBot {
 
     public void startBot() throws InterruptedException {
 
-        String token = System.getenv("TsundereBotToken");
-
-        System.out.println("Helpers userId sent to JDA: " + Helpers.getUserIdFromToken(token));
+        String token = System.getenv("BotToken");
 
         //LavalinkClient lavalinkClient = new LavalinkClient(Helpers.getUserIdFromToken(token));
 
@@ -39,7 +37,7 @@ public class TsundereBot {
                 .addEventListeners(listener)
                 .enableIntents(GatewayIntent.GUILD_MEMBERS)
                 .setMemberCachePolicy(MemberCachePolicy.ALL)
-                .setActivity(Activity.customStatus("/control"))
+                .setActivity(Activity.customStatus("Now with a website!"))
                 .build().awaitReady();
 
         jda.updateCommands()
@@ -50,7 +48,6 @@ public class TsundereBot {
                 .addCommands(Commands.slash("queue", "Shows queue"))
                 .addCommands(Commands.slash("skip", "Go to next song"))
                 .addCommands(Commands.slash("stop", "Stops playback and clears queue"))
-                .addCommands(Commands.slash("control", "Control the music on the website"))
                 .queue();
     }
 }

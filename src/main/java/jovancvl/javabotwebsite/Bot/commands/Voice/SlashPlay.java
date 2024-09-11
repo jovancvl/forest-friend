@@ -48,7 +48,7 @@ public class SlashPlay implements MusicSlashCommand {
     }
 
     @Override
-    public String getCommand() {
+    public String name() {
         return "play";
     }
 }

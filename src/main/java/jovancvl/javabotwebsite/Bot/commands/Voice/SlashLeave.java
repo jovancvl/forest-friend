@@ -23,7 +23,7 @@ public class SlashLeave implements MusicSlashCommand {
     }
 
     @Override
-    public String getCommand() {
+    public String name() {
         return "leave";
     }
 }

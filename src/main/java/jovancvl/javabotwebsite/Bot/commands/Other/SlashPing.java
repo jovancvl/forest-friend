@@ -14,7 +14,7 @@ public class SlashPing implements BasicSlashCommand {
     }
 
     @Override
-    public String getCommand() {
+    public String name() {
         return "ping";
     }
 }

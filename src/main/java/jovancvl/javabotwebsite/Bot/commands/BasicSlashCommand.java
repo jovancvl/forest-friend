@@ -4,5 +4,5 @@ import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEve
 
 public interface BasicSlashCommand {
     void run(SlashCommandInteractionEvent event);
-    String getCommand();
+    String name();
 }

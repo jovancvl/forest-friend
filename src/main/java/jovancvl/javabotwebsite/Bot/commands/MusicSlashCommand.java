@@ -5,5 +5,5 @@ import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEve
 
 public interface MusicSlashCommand {
     void run(SlashCommandInteractionEvent event, MusicManager musicManager);
-    String getCommand();
+    String name();
 }

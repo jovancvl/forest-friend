@@ -29,7 +29,7 @@ public class SlashJoin implements MusicSlashCommand {
     }
 
     @Override
-    public String getCommand() {
+    public String name() {
         return "join";
     }
 }

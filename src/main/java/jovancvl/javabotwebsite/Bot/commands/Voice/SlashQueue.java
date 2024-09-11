@@ -34,7 +34,7 @@ public class SlashQueue implements MusicSlashCommand {
     }
 
     @Override
-    public String getCommand() {
+    public String name() {
         return "queue";
     }
 }

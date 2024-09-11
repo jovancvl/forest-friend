@@ -2,10 +2,13 @@ package jovancvl.javabotwebsite.Bot.managers;
 
 import jovancvl.javabotwebsite.Bot.Music.MusicManager;
 import jovancvl.javabotwebsite.Bot.commands.BasicSlashCommand;
+import jovancvl.javabotwebsite.Bot.commands.Other.SlashInvite;
 import jovancvl.javabotwebsite.Bot.commands.Voice.*;
 import jovancvl.javabotwebsite.Bot.commands.MusicSlashCommand;
 import jovancvl.javabotwebsite.Bot.commands.Other.SlashPing;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +21,8 @@ public class CommandManager {
     @Autowired
     public MusicManager musicManager;
 
+    private static final Logger LOG = LoggerFactory.getLogger(CommandManager.class);
+
 
     public CommandManager() {
         this.addCommand(new SlashPing());
@@ -27,15 +32,15 @@ public class CommandManager {
         this.addMusicCommand(new SlashStop());
         this.addMusicCommand(new SlashSkip());
         this.addMusicCommand(new SlashQueue());
-        this.addMusicCommand(new SlashWebsiteControl());
+        this.addCommand(new SlashInvite());
     }
 
     public void addCommand(BasicSlashCommand command){
-        commands.put(command.getCommand(), command);
+        commands.put(command.name(), command);
     }
 
     public void addMusicCommand(MusicSlashCommand command){
-        musicCommands.put(command.getCommand(), command);
+        musicCommands.put(command.name(), command);
     }
 
     public void run(SlashCommandInteractionEvent event) {
@@ -54,7 +59,7 @@ public class CommandManager {
         }
 
         event.reply("Command does not exist.").queue();
-        System.out.printf("Command %s does not exist.", name);
+        LOG.warn("Command {} does not exist.", name);
 
     }
 }

@@ -14,16 +14,9 @@ public class BeanConfiguration {
 
     @Bean
     public LavalinkClient lavalinkClient(){
-        LavalinkClient lavalinkClient = new LavalinkClient(Helpers.getUserIdFromToken(System.getenv("TsundereBotToken")));
-        System.out.println("Helpers userId sent to lavalink: " + Helpers.getUserIdFromToken(System.getenv("TsundereBotToken")));
+        LavalinkClient lavalinkClient = new LavalinkClient(Helpers.getUserIdFromToken(System.getenv("BotToken")));
         MusicManager.registerLavalinkNodes(lavalinkClient);
         MusicManager.registerLavalinkListeners(lavalinkClient);
         return lavalinkClient;
-    }
-
-    @Bean
-    public OkHttpClient okHttpClient(){
-        // Needed to set a read timeout longer than 10 seconds
-        return new OkHttpClient.Builder().readTimeout(30L, TimeUnit.SECONDS).build();
     }
 }

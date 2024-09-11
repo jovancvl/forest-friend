@@ -31,7 +31,7 @@ public class SlashSkip implements MusicSlashCommand {
     }
 
     @Override
-    public String getCommand() {
+    public String name() {
         return "skip";
     }
 
