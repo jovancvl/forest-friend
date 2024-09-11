@@ -2,8 +2,20 @@ body {
     margin-bottom: 50px;
 }
 
-p {
+p, h1, h2, h3, h4 {
     text-align: center;
+}
+
+ol {
+    display: table;
+    margin: 0 auto;
+    list-style-position: inside;
+}
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 tbody {
@@ -21,6 +33,7 @@ td {
     font-size: 16px;
 }
 
+/* change input field bottom border color when typing */
 input:focus {
     border-bottom: 1px solid #3949ab !important;
 }
