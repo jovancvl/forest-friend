@@ -26,13 +26,13 @@ public class Bot {
 
     public void startBot() throws InterruptedException {
 
-        String token = System.getenv("BotToken");
+        //String token = System.getenv("BotToken");
 
         //LavalinkClient lavalinkClient = new LavalinkClient(Helpers.getUserIdFromToken(token));
 
         //Listener listener = new Listener();
 
-        JDA jda = JDABuilder.createDefault(token)
+        JDA jda = JDABuilder.createDefault(Constants.botToken)
                 .setVoiceDispatchInterceptor(new JDAVoiceUpdateListener(lavalinkClient))
                 .addEventListeners(listener)
                 .enableIntents(GatewayIntent.GUILD_MEMBERS)
