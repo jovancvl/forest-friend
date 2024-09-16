@@ -14,6 +14,12 @@ public class WebController {
     @Autowired
     MusicManager musicManager;
 
+    @GetMapping("")
+    public String index(){
+        System.out.println("home page opened");
+        return "index";
+    }
+
     @GetMapping("/controls/{server}")
     public String play(Model model, @PathVariable String server) {
         //System.out.println("controls accessed on server " + server);
