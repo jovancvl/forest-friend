@@ -8,7 +8,7 @@ if (document.readyState === "loading") {
 var server_id = null;
 
 const stompClient = new StompJs.Client({
-    brokerURL: 'ws://forestfriend.yoviepoo.xyz/websocket_connect'
+    brokerURL: 'wss://forestfriend.yoviepoo.xyz/websocket_connect'
 });
 
 stompClient.activate();

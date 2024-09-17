@@ -1,22 +1,28 @@
 package jovancvl.javabotwebsite.Controllers;
 
 import jovancvl.javabotwebsite.Bot.Music.MusicManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 
 @Controller
 public class WebController {
+
+    private static final Logger LOG = LoggerFactory.getLogger(WebController.class);
 
     @Autowired
     MusicManager musicManager;
 
     @GetMapping("")
     public String index(){
-        System.out.println("home page opened");
+        LOG.info("Home page opened on {}", new Date());
         return "index";
     }
 
