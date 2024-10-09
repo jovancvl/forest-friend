@@ -1,10 +1,12 @@
 package jovancvl.javabotwebsite.Bot.commands.Voice;
 
+import jovancvl.javabotwebsite.Bot.Constants;
 import jovancvl.javabotwebsite.Bot.Music.MusicManager;
 import jovancvl.javabotwebsite.Bot.commands.MusicSlashCommand;
 import dev.arbjerg.lavalink.client.player.Track;
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
+import net.dv8tion.jda.api.interactions.components.buttons.Button;
 
 import java.util.List;
 
@@ -26,7 +28,9 @@ public class SlashQueue implements MusicSlashCommand {
                 Track s = songs.get(i);
                 sb.append(String.format("%d. %s | <%s>\n", i, s.getInfo().getTitle(), s.getInfo().getUri()));
             }
-            event.reply(sb.toString()).queue();
+            event.reply(sb.toString())
+                    .addActionRow(Button.link(Constants.websiteURL + event.getGuild().getId(), "Website"))
+                    .queue();
         } catch (NullPointerException e) {
             event.reply("No song is playing").queue();
         }

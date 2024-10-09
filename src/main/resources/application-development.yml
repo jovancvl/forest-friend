@@ -1,0 +1,6 @@
+spring:
+  config:
+    activate:
+      on-profile: development
+server:
+  port: 80

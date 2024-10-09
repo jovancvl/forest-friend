@@ -1,0 +1,10 @@
+spring:
+  config:
+    activate:
+      on-profile: production
+
+server:
+  ssl:
+    certificate: ${ssl_certificate}
+    certificate-private-key: ${ssl_certificate_private_key}
+  port: 443
